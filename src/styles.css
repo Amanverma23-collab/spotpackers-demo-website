@@ -1,0 +1,177 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-electric: var(--electric);
+  --color-cyan-glow: var(--cyan-glow);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --navy: oklch(0.18 0.04 260);
+  --navy-deep: oklch(0.13 0.05 260);
+  --electric: oklch(0.65 0.22 252);
+  --cyan-glow: oklch(0.82 0.16 220);
+
+  --background: oklch(0.13 0.05 260);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.2 0.04 260);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.18 0.04 260);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.65 0.22 252);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0.04 260);
+  --secondary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.25 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --accent: oklch(0.82 0.16 220);
+  --accent-foreground: oklch(0.13 0.05 260);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.65 0.22 252);
+
+  --gradient-hero: radial-gradient(1200px 600px at 20% 0%, oklch(0.65 0.22 252 / 0.35), transparent 60%),
+                   radial-gradient(900px 500px at 90% 30%, oklch(0.82 0.16 220 / 0.25), transparent 60%),
+                   linear-gradient(180deg, oklch(0.13 0.05 260) 0%, oklch(0.1 0.04 260) 100%);
+  --gradient-glow: linear-gradient(135deg, oklch(0.65 0.22 252), oklch(0.82 0.16 220));
+  --shadow-glow: 0 0 60px oklch(0.65 0.22 252 / 0.5);
+  --shadow-cyan: 0 0 40px oklch(0.82 0.16 220 / 0.4);
+  --glass-bg: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.14);
+}
+
+.dark { color-scheme: dark; }
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--glass-border);
+}
+
+@utility glass-strong {
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+@utility text-gradient {
+  background: var(--gradient-glow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glow-shadow { box-shadow: var(--shadow-glow); }
+@utility cyan-shadow { box-shadow: var(--shadow-cyan); }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes float-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(15px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes drive {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+@keyframes route-dash {
+  to { stroke-dashoffset: -200; }
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+
+@utility animate-float-y { animation: float-y 6s ease-in-out infinite; }
+@utility animate-float-x { animation: float-x 8s ease-in-out infinite; }
+@utility animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+@utility animate-drive { animation: drive 14s linear infinite; }
+@utility animate-route { stroke-dasharray: 12 14; animation: route-dash 3s linear infinite; }
+@utility animate-spin-slow { animation: spin-slow 30s linear infinite; }
+
+@utility magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  background: var(--gradient-glow);
+  color: oklch(0.13 0.05 260);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  box-shadow: 0 10px 40px -10px oklch(0.65 0.22 252 / 0.65);
+}
+@utility magnetic-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: white;
+  backdrop-filter: blur(14px);
+  transition: all .25s ease;
+}
+.magnetic-btn:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.1); }
+.magnetic-btn-ghost:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
