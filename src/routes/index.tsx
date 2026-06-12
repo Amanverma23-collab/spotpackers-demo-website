@@ -6,7 +6,7 @@ import {
   Shield, MapPin, Clock, Phone, Mail, MessageCircle, Star,
   CheckCircle2, ChevronDown, Sparkles, Globe2, ArrowRight,
 } from "lucide-react";
-import logoAsset from "@/assets/spot-wordmark.png.asset.json";
+import logoAsset from "@/assets/spot-wordmark.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -100,7 +100,7 @@ function Nav() {
         <div className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all ${scrolled ? "glass-strong" : "glass"}`}>
           <a href="#top" className="flex items-center gap-3">
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="SPOT Packers & Movers"
               className="h-12 w-auto object-contain drop-shadow-[0_0_18px_rgba(0,212,255,0.35)] sm:h-14"
             />
@@ -178,7 +178,7 @@ function Hero() {
               <div className="relative">
                 <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-electric/40 via-cyan-glow/30 to-electric/40 opacity-70 blur-2xl animate-pulse-glow" />
                 <img
-                  src={logoAsset.url}
+                  src={logoAsset}
                   alt="SPOT Packers & Movers Logo"
                   className="relative h-24 w-auto object-contain drop-shadow-[0_0_28px_rgba(0,212,255,0.45)] md:h-32 lg:h-36"
                 />
@@ -885,7 +885,7 @@ function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-3">
-              <img src={logoAsset.url} alt="SPOT" className="h-12 w-auto rounded-md bg-white/95 p-1" />
+              <img src={logoAsset} alt="SPOT" className="h-12 w-auto rounded-md bg-white/95 p-1" />
               <div>
                 <div className="font-display font-bold text-white">SPOT</div>
                 <div className="text-[10px] uppercase tracking-widest text-cyan-glow">Packers & Movers</div>
